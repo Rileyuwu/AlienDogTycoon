@@ -1,15 +1,18 @@
-public class Screens {
+public class Screens extends ProcessingFX{
+
+
 
     boolean querying;
+    private String name = "";
     public Screens(){
 
     }
 
-    public String requestUsernameInput(){
-        querying = true;
-        String temp = "";
+    public void keyTyped(){
         while (querying){
-            if (key.keycode)
+            name+=key.key;
+
+        }
 
     }
 }
