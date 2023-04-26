@@ -1,4 +1,4 @@
-public class Movment {
+public class Movement {
     /*
     * Little cartoon movement.
     *
