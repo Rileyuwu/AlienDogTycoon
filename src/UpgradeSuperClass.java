@@ -5,15 +5,7 @@ public class UpgradeSuperClass {
 
     //Constants for upgrade costs
     //TODO change pricing
-    static final int GROOMING_MACHINE_COST_FIRST = 1000;
-    static final int GROOMING_MACHINE_COST_SECOND = 1000;
-    static final int GROOMING_MACHINE_COST_THIRD = 1000;
-    static final int FOOD_FACTORY_COST_FIRST = 2000;
-    static final int FOOD_FACTORY_COST_SECOND = 2000;
-    static final int FOOD_FACTORY_COST_THIRD = 2000;
-    static final int GROWTH_CHAMBER_COST_FIRST = 3000;
-    static final int GROWTH_CHAMBER_COST_SECOND = 3000;
-    static final int GROWTH_CHAMBER_COST_THIRD = 3000;
+
     static final int MAX_GROOMING_MACHINE_TIER = 4;
     static final int MAX_FOOD_FACTORY_TIER = 4;
     static final int MAX_GROWTH_CHAMBER_TIER = 4;
@@ -135,8 +127,10 @@ public class UpgradeSuperClass {
                 return (int) Math.pow(10, gmTier+2);
                 break;
         }
+        return 0;
     }
 
+    /*
     public void startUpgrade() {
 
         Scanner scanner = new Scanner(System.in);
@@ -156,22 +150,7 @@ public class UpgradeSuperClass {
 
         }
     }
-
-    /*
-    public void upgradeGroomingMachine() {
-        if (playerMoney >= GROOMING_MACHINE_COST && !groomingMachineUpgraded) {
-            playerMoney -= GROOMING_MACHINE_COST;
-            groomingMachineUpgraded = true;
-            System.out.println("Grooming Machine upgraded!");
-            System.out.println("New grooming machine functions unlocked.");
-        } else if (groomingMachineUpgraded) {
-            System.out.println("Your grooming machine is already upgraded!");
-        } else {
-            System.out.println("You don't have enough money to upgrade your grooming machine!");
-        }
-    }
     */
-
     public void upgradeMachine(Machine machine){
         if (getMachineTier(machine)<MAX_GROWTH_CHAMBER_TIER){
             if (playerMoney >= getUpgradeCost(machine)){
