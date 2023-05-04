@@ -117,15 +117,12 @@ public class UpgradeSuperClass {
             case FOOD_FACTORY:
                 int ffTier = foodFactoryTier;
                 return (int) Math.pow(10, ffTier+2);
-                break;
             case GROWTH_CHAMBER:
                 int gcTier = growthChamberTier;
                 return (int) Math.pow(10, gcTier+2);
-                break;
             case GROOMING_MACHINE:
                 int gmTier = groomingMachineTier;
                 return (int) Math.pow(10, gmTier+2);
-                break;
         }
         return 0;
     }
