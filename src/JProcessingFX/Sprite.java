@@ -15,7 +15,7 @@ import javafx.scene.shape.Shape;
  * @author: Adam Drenth
  * @version: 14.12.2021
  */
-public class Sprite {`
+public class Sprite {
     PVector position;
     PVector velocity;
     PVector acceleration;
@@ -23,7 +23,7 @@ public class Sprite {`
     double mass;    // Must be a value greater than 0. This is required for friction forces
 
     // Construction. It resizes the image to fit within the width and height without
-    // perserving the ratio.
+    // preserving the ratio.
     public Sprite(String imageFile, double width, double height) {
         Image pixels = new Image(imageFile);
         image = new ImageView(pixels);
