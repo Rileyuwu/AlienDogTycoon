@@ -1,9 +1,7 @@
-public class Screens extends ProcessingFX{
-
-
-
+import JProcessingFX.ProcessingFX;
+public abstract class Screens extends ProcessingFX {
     boolean querying;
-    private String name = "";
+    protected String name = "";
     public Screens(){
 
     }
