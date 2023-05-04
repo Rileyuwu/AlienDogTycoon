@@ -4,9 +4,19 @@ import java.lang.Math;
 public class UpgradeSuperClass {
 
     //Constants for upgrade costs
-    static final int GROOMING_MACHINE_COST = 1000;
-    static final int FOOD_FACTORY_COST = 2000;
-    static final int GROWTH_CHAMBER_COST = 3000;
+    //TODO change pricing
+    static final int GROOMING_MACHINE_COST_FIRST = 1000;
+    static final int GROOMING_MACHINE_COST_SECOND = 1000;
+    static final int GROOMING_MACHINE_COST_THIRD = 1000;
+    static final int FOOD_FACTORY_COST_FIRST = 2000;
+    static final int FOOD_FACTORY_COST_SECOND = 2000;
+    static final int FOOD_FACTORY_COST_THIRD = 2000;
+    static final int GROWTH_CHAMBER_COST_FIRST = 3000;
+    static final int GROWTH_CHAMBER_COST_SECOND = 3000;
+    static final int GROWTH_CHAMBER_COST_THIRD = 3000;
+    static final int MAX_GROOMING_MACHINE_TIER = 4;
+    static final int MAX_FOOD_FACTORY_TIER = 4;
+    static final int MAX_GROWTH_CHAMBER_TIER = 4;
 
     //Variables for player's money and upgrade status
     int playerMoney;
@@ -82,6 +92,49 @@ public class UpgradeSuperClass {
                 break;
 
         }
+        return null;
+    }
+
+    enum Machine{
+        GROWTH_CHAMBER,
+        FOOD_FACTORY,
+        GROOMING_MACHINE
+    }
+
+    /**
+     * gets the tier of the given machine
+     * @param machine the machine to get the tier of
+     * @return the tier of the machine
+     */
+    private int getMachineTier(Machine machine){
+        switch (machine){
+            case GROOMING_MACHINE:
+                return groomingMachineTier;
+                break;
+            case GROWTH_CHAMBER:
+                return growthChamberTier;
+                break;
+            case FOOD_FACTORY:
+                return foodFactoryTier;
+                break;
+        }
+    }
+
+    private int getUpgradeCost(Machine machine){
+        switch (machine){
+            case FOOD_FACTORY:
+                int ffTier = foodFactoryTier;
+                return (int) Math.pow(10, ffTier+2);
+                break;
+            case GROWTH_CHAMBER:
+                int gcTier = growthChamberTier;
+                return (int) Math.pow(10, gcTier+2);
+                break;
+            case GROOMING_MACHINE:
+                int gmTier = groomingMachineTier;
+                return (int) Math.pow(10, gmTier+2);
+                break;
+        }
     }
 
     public void startUpgrade() {
@@ -104,7 +157,8 @@ public class UpgradeSuperClass {
         }
     }
 
-    void upgradeGroomingMachine() {
+    /*
+    public void upgradeGroomingMachine() {
         if (playerMoney >= GROOMING_MACHINE_COST && !groomingMachineUpgraded) {
             playerMoney -= GROOMING_MACHINE_COST;
             groomingMachineUpgraded = true;
@@ -114,6 +168,18 @@ public class UpgradeSuperClass {
             System.out.println("Your grooming machine is already upgraded!");
         } else {
             System.out.println("You don't have enough money to upgrade your grooming machine!");
+        }
+    }
+    */
+
+    public void upgradeMachine(Machine machine){
+        if (getMachineTier(machine)<MAX_GROWTH_CHAMBER_TIER){
+            if (playerMoney >= getUpgradeCost(machine)){
+                playerMoney -= getUpgradeCost(machine);
+            }
+        }else{
+            System.out.println("Uh... this shouldn't have happened. (Error with upgrading)");
+            // this should never happen - the upgrade button shouldn't be able to be interacted with if it's already at the max tier
         }
     }
 
