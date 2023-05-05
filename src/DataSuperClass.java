@@ -17,9 +17,9 @@ public class DataSuperClass {
                 writer.close();
                 System.out.println("Player name added to player info file.");
 
-                PlayerInfoSaver playerInfoSaver = new PlayerInfoSaver();
+         /*       PlayerInfoSaver playerInfoSaver = new PlayerInfoSaver();
                 String savedPlayerName = playerInfoSaver.getPlayerName();
-                System.out.println("Player name retrieved from player info file: " + savedPlayerName);
+                System.out.println("Player name retrieved from player info file: " + savedPlayerName);*/
             } catch (IOException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
