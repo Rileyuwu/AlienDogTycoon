@@ -4,6 +4,7 @@ import java.io.FileWriter;
 
 public class DataSuperClass {
 
+
     public static class DataSaver {
         public static void main(String[] args) {
             try {
@@ -38,7 +39,10 @@ public class DataSuperClass {
         }
     }
 
-    public static class PlayerInfoSaver {
+
+
+
+    public static class PlayerInfoSaver { //Reading from the file
         public String getPlayerName() throws IOException {
             File file = new File("player info.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
