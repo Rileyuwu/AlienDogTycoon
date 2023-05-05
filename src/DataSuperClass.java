@@ -4,6 +4,7 @@ import java.io.FileWriter;
 
 public class DataSuperClass {
 
+
     public static class DataSaver {
         public static void main(String[] args) {
             try {
@@ -16,9 +17,9 @@ public class DataSuperClass {
                 writer.close();
                 System.out.println("Player name added to player info file.");
 
-                PlayerInfoSaver playerInfoSaver = new PlayerInfoSaver();
+         /*       PlayerInfoSaver playerInfoSaver = new PlayerInfoSaver();
                 String savedPlayerName = playerInfoSaver.getPlayerName();
-                System.out.println("Player name retrieved from player info file: " + savedPlayerName);
+                System.out.println("Player name retrieved from player info file: " + savedPlayerName);*/
             } catch (IOException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -38,7 +39,10 @@ public class DataSuperClass {
         }
     }
 
-    public static class PlayerInfoSaver {
+
+
+
+    public static class PlayerInfoSaver { //Reading from the file
         public String getPlayerName() throws IOException {
             File file = new File("player info.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
