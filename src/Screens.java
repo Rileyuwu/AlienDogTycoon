@@ -1,7 +1,9 @@
 import JProcessingFX.ProcessingFX;
+import javafx.scene.image.Image;
 public abstract class Screens extends ProcessingFX {
     boolean querying;
     protected String name = "";
+    Image background = new Image("DogAssets/background.png");
     public Screens(){
 
     }
