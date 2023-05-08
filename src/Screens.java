@@ -10,7 +10,9 @@ public abstract class Screens extends ProcessingFX {
         while (querying){
             name+=key.key;
 
+
         }
 
     }
+
 }

@@ -8,4 +8,8 @@ public class Dog {
     public Dog(int hueInput){
         this.color = Color.hsb(hueInput, 1, 1);
     }
+
+    void drawDog(){
+        
+    }
 }
