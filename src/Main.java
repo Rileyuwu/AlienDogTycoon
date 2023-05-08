@@ -18,7 +18,7 @@ public class Main extends ProcessingFX {
     //todo save every x seconds
     }
 
-    void drawBackground(GraphicsContext pen){
+    void drawBackground(){
 
     }
 
