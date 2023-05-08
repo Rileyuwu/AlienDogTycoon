@@ -102,14 +102,12 @@ public class UpgradeSuperClass {
         switch (machine){
             case GROOMING_MACHINE:
                 return groomingMachineTier;
-                break;
             case GROWTH_CHAMBER:
                 return growthChamberTier;
-                break;
             case FOOD_FACTORY:
                 return foodFactoryTier;
-                break;
         }
+        return 0;
     }
 
     private int getUpgradeCost(Machine machine){
@@ -127,27 +125,7 @@ public class UpgradeSuperClass {
         return 0;
     }
 
-    /*
-    public void startUpgrade() {
 
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            // Display options and player's status
-            System.out.println("Welcome to the upgrade menu!");
-            System.out.println("You currently have $" + playerMoney);
-            System.out.println("Grooming Machine: " + (groomingMachineUpgraded ? "Upgraded" : "Not Upgraded"));
-            System.out.println("Food Factory: " + (foodFactoryUpgraded ? "Upgraded" : "Not Upgraded"));
-            System.out.println("Breeding System: " + (growthChamber ? "Upgraded" : "Not Upgraded"));
-            System.out.println("What would you like to do?");
-            System.out.println("1. Upgrade Grooming Machine ($" + GROOMING_MACHINE_COST + ")");
-            System.out.println("2. Upgrade Food Factory ($" + FOOD_FACTORY_COST + ")");
-            System.out.println("3. Upgrade Breeding System ($" + GROWTH_CHAMBER_COST + ")");
-            System.out.println("4. Exit");
-
-        }
-    }
-    */
     public void upgradeMachine(Machine machine){
         if (getMachineTier(machine)<MAX_GROWTH_CHAMBER_TIER){
             if (playerMoney >= getUpgradeCost(machine)){
