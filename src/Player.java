@@ -1,7 +1,7 @@
 
 public class Player {
     public String name;
-    int money;
+    public static int money;
 
     public Player(){
         this.name = "";
@@ -15,4 +15,5 @@ public class Player {
     public void setName(String newName){
         this.name = newName;
     }
+
 }

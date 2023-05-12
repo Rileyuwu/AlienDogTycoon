@@ -11,10 +11,10 @@ public class UpgradeSuperClass {
     static final int MAX_GROWTH_CHAMBER_TIER = 4;
 
     //Variables for player's money and upgrade status
-    int playerMoney;
-    int groomingMachineTier;
-    int foodFactoryTier;
-    int growthChamberTier;
+    static int playerMoney;
+    static int groomingMachineTier;
+    static int foodFactoryTier;
+    static int growthChamberTier;
 
     public UpgradeSuperClass() {
 
@@ -24,7 +24,21 @@ public class UpgradeSuperClass {
         growthChamberTier = 1;
 
     }
-
+    public static boolean groomingMachineUpgradable(){
+        if(groomingMachineTier < MAX_GROOMING_MACHINE_TIER){
+            return Player.money >= getUpgradeCost(Machine.GROOMING_MACHINE);
+        } return false;
+    }
+    public static boolean foodFactoryUpgradable(){
+        if(foodFactoryTier < MAX_FOOD_FACTORY_TIER){
+            return Player.money >= getUpgradeCost(Machine.FOOD_FACTORY);
+        } return false;
+    }
+    public static boolean growthChamberUpgradable(){
+        if(growthChamberTier < MAX_GROWTH_CHAMBER_TIER){
+            return Player.money >= getUpgradeCost(Machine.GROWTH_CHAMBER);
+        } return false;
+    }
     /**
      * enum that contains dog rarity
      */
@@ -98,7 +112,7 @@ public class UpgradeSuperClass {
      * @param machine the machine to get the tier of
      * @return the tier of the machine
      */
-    private int getMachineTier(Machine machine){
+    private static int getMachineTier(Machine machine){
         switch (machine){
             case GROOMING_MACHINE:
                 return groomingMachineTier;
@@ -110,7 +124,7 @@ public class UpgradeSuperClass {
         return 0;
     }
 
-    private int getUpgradeCost(Machine machine){
+    private static int getUpgradeCost(Machine machine){
         switch (machine){
             case FOOD_FACTORY:
                 int ffTier = foodFactoryTier;

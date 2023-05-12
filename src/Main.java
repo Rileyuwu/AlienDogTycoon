@@ -18,6 +18,15 @@ public class Main extends ProcessingFX {
     //todo save every x seconds
     }
 
+    /**
+     * PUT METHODS IN OTHER CLASSES IN THIS METHOD IF THEY REQUIRE MOUSE CLICK INPUT
+     */
+    public void mousePressed(){
+        Screens.checkForOpeningUpgradesScreen();
+        Screens.checkForClosingUpgradesScreen();
+        Screens.checkForUpgradeMachine();
+    }
+
     void drawBackground(){
 
     }

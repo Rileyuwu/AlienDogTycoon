@@ -20,7 +20,7 @@ public abstract class ProcessingFX extends Application {
     // These variables are accessible to the MyExampleApp class
     protected Window window;    // Maintains the status and control of the window itself, including size and title
     protected Matrix matrix;    // Tracks and manages transformations on the Convas
-    protected Mouse mouse;      // Tracks and maintains the status of the mouse
+    protected static Mouse mouse;      // Tracks and maintains the status of the mouse
     protected Keyboard key;     // Tracks and maintains the status of the keyboard
 
     // These variables are hidden for all other classes and objects.
