@@ -57,7 +57,7 @@ public class UpgradeSuperClass {
      * @param tier the tier of growth chamber the player has unlocked
      * @return the rarity of the newly generated dog
      */
-    public Rarity getNewDogRarity(int tier) {
+    public static Rarity getNewDogRarity(int tier) {
         int random = (int) (Math.random() * 6);
         switch (tier) {
             case 1:

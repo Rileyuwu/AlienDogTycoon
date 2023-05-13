@@ -1,7 +1,7 @@
 public class Money {
     static int playerMoney = 0;
 
-    public int getPlayerBalance(){
+    public static int getPlayerBalance(){
 
         return playerMoney;
     }

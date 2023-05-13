@@ -2,7 +2,9 @@ import JProcessingFX.ProcessingFX;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Main extends ProcessingFX {
-    public static void main(String[] args){}
+    public static void main(String[] args){
+        launch(args);
+    }
 
 
     @Override
@@ -11,6 +13,7 @@ public class Main extends ProcessingFX {
     //TODO load data
         // TODO output data
     //TODO load background
+        DataSuperClass.DataSaver.main(null);
     }
 
     @Override
