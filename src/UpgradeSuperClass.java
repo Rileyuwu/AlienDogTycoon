@@ -26,17 +26,20 @@ public class UpgradeSuperClass {
     }
     public static boolean groomingMachineUpgradable(){
         if(groomingMachineTier < MAX_GROOMING_MACHINE_TIER){
-            return Player.money >= getUpgradeCost(Machine.GROOMING_MACHINE);
+            Player player = new Player();
+            return player.getPlayerMoney() >= getUpgradeCost(Machine.GROOMING_MACHINE);
         } return false;
     }
     public static boolean foodFactoryUpgradable(){
         if(foodFactoryTier < MAX_FOOD_FACTORY_TIER){
-            return Player.money >= getUpgradeCost(Machine.FOOD_FACTORY);
+            Player player = new Player();
+            return player.getPlayerMoney() >= getUpgradeCost(Machine.FOOD_FACTORY);
         } return false;
     }
     public static boolean growthChamberUpgradable(){
         if(growthChamberTier < MAX_GROWTH_CHAMBER_TIER){
-            return Player.money >= getUpgradeCost(Machine.GROWTH_CHAMBER);
+            Player player = new Player();
+            return player.getPlayerMoney() >= getUpgradeCost(Machine.GROWTH_CHAMBER);
         } return false;
     }
     /**

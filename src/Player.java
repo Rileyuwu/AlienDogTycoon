@@ -1,6 +1,7 @@
 import java.io.IOException;
 
 public class Player {
+    public static boolean money;
     private String playerName;
     private int playerMoney;
 

@@ -11,7 +11,7 @@ public class DataSuperClass {
                 String playerName = playerInfoGetter.getName();
 
                 Money money = new Money();
-                int playerMoney = money.getPlayerBalance();
+                int playerMoney = Money.getPlayerBalance();
 
                 FileWriter writer = new FileWriter("player_info.txt", true);
                 writer.write("Player Name: " + playerName + "\n");
@@ -36,7 +36,7 @@ public class DataSuperClass {
             Thread autoSaveThread = new Thread(() -> {
                 while (true) {
                     try {
-                        Thread.sleep(10000); // Sleep for 10 seconds
+                        Thread.sleep(10000); // Sleep for 10 seconds change upgrade time
                         saveData(playerName, money);
                     } catch (InterruptedException e) {
                         System.out.println("AutoSave thread interrupted.");
@@ -67,7 +67,7 @@ public class DataSuperClass {
             System.out.println("Enter player name:");
             String name = scanner.nextLine();
             scanner.close();
-            return name;
+            return name; //gotta visualize this.
         }
     }
 
