@@ -1,19 +1,22 @@
+import java.io.IOException;
 
 public class Player {
-    public String name;
-    public static int money;
+    private final String playerName;
+    private final int playerMoney;
 
-    public Player(){
-        this.name = "";
-        this.money = 0;
+    public Player() throws IOException {
+        DataSuperClass.PlayerInfoSaver playerInfoSaver = new DataSuperClass.PlayerInfoSaver();
+        playerName = playerInfoSaver.getPlayerName();
+
+        Money money = new Money();
+        playerMoney = Money.getPlayerBalance();
     }
 
-    /**
-     * sets the player's name to the chosen one
-     * @param newName the player's input for their name
-     */
-    public void setName(String newName){
-        this.name = newName;
+    public String getPlayerName() {
+        return playerName;
     }
 
+    public int getPlayerMoney() {
+        return playerMoney;
+    }
 }

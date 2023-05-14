@@ -2,11 +2,11 @@ import javafx.scene.paint.Color;
 
 public class Dog {
 
-    private String[] commonImages;
-    private String[] uncommonImages;
-    private String[] rareImages;
-    private String[] epicImages;
-    private String[] legendaryImages;
+    private final String[] commonImages;
+    private final String[] uncommonImages;
+    private final String[] rareImages;
+    private final String[] epicImages;
+    private final String[] legendaryImages;
 
     public Dog() {
         commonImages = new String[] {
