@@ -1,16 +1,22 @@
 import java.io.IOException;
 
 public class Player {
-    private final String playerName;
-    private final int playerMoney;
+    private String playerName;
+    private int playerMoney;
 
-    public Player() throws IOException {
-        DataSuperClass.PlayerInfoSaver playerInfoSaver = new DataSuperClass.PlayerInfoSaver();
-        playerName = playerInfoSaver.getPlayerName();
+    public Player() {
+        try {
+            DataSuperClass.PlayerInfoSaver playerInfoSaver = new DataSuperClass.PlayerInfoSaver();
+            playerName = playerInfoSaver.getPlayerName();
 
-        Money money = new Money();
-        playerMoney = Money.getPlayerBalance();
+            Money money = new Money();
+            playerMoney = Money.getPlayerBalance();
+        } catch (IOException e) {
+            System.out.println("An error occurred while initializing the player.");
+            e.printStackTrace();
+        }
     }
+
 
     public String getPlayerName() {
         return playerName;
