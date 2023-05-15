@@ -65,4 +65,6 @@ public class Dog {
         int randomIndex = (int) (Math.random() * imageArray.length);
         return imageArray[randomIndex];
     }
+
+
 }

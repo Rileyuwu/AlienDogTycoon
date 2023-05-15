@@ -1,11 +1,16 @@
 import JProcessingFX.ProcessingFX;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import java.util.Scanner;
-public abstract class Screens extends ProcessingFX {
-    static boolean querying;
-    static boolean upgradesScreenOpen = false;
+import javafx.scene.control.TextInputDialog;
+import java.util.Optional;
+
+public class Screens extends ProcessingFX {
     protected String name = "";
-    Image background = new Image("DogAssets/petDogBackground.png");
+    Image background = new Image("DogAssets/DogTycoonBackground.png");
+
+    public Screens() {
+
+    }
 
     /**
      * @param x1 the x value of the top left corner of the rectangle
@@ -14,48 +19,60 @@ public abstract class Screens extends ProcessingFX {
      * @param y2 the y value of the bottom right corner of the rectangle
      * @return whether the mouse is within the box supplied in parameters
      */
-    public static boolean mouseInRect(double x1, double y1, double x2, double y2){
-        if(x1 <= mouse.x && mouse.x <= x2 && y1 <= mouse.y && mouse.y <= y2){
+    public boolean mouseInRect(double x1, double y1, double x2, double y2) {
+        if (x1 <= mouse.x && mouse.x <= x2 && y1 <= mouse.y && mouse.y <= y2) {
             return true;
         } else {
             return false;
         }
     }
 
-    /**
-     * @author ned
-     * TODO CHANGE VALUES FOR mouseInRect() TO THE VALUES FOR THE BUTTON TO OPEN THE UPGRADES SCREEN
-     * checks if the player is clicking on the button to open the upgrades screen
-     */
-    public static void checkForOpeningUpgradesScreen(){
-        if(!upgradesScreenOpen && mouseInRect(1, 1, 1, 1)){
-            upgradesScreenOpen = true;
-        }
-    }
-    /**
-     * @author ned
-     * TODO CHANGE VALUES FOR mouseInRect() TO THE VALUES FOR THE BUTTON TO OPEN THE UPGRADES SCREEN
-     * checks if the player is clicking on the button to close the upgrades screen
-     */
-    public static void checkForClosingUpgradesScreen(){
-        if(upgradesScreenOpen && mouseInRect(1, 1, 1, 1)){
-            upgradesScreenOpen = false;
+    public void mouseClicked() {
+        if (mouseInRect(400, 50, 590, 165)) {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setHeaderText("Do you want to sell food? (yes/no)");
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent() && result.get().equalsIgnoreCase("yes")) {
+                Money.playerMoney += 100.0;
+                System.out.println("One bag of pet food sold. Earned $100.");
+                System.out.println("Current income: $" + Money.playerMoney);
+            }
+        } else if (mouseInRect(400, 200, 590, 250)) {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setHeaderText("Do you want to sell grooming service? (yes/no)");
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent() && result.get().equalsIgnoreCase("yes")) {
+                Money.playerMoney += 150.0;
+                System.out.println("One grooming service sold. Earned $150.");
+                System.out.println("Current income: $" + Money.playerMoney);
+            }
         }
     }
 
-    /**
-     * checks to see if the player is trying to click a button to upgrade a machine
-     */
-    public static void checkForUpgradeMachine(){
-        //growth chamber
-        if(upgradesScreenOpen && mouseInRect(1, 1, 1, 1) && UpgradeSuperClass.growthChamberUpgradable()){
-            upgradesScreenOpen = false;
-        //food factory
-        } else if(upgradesScreenOpen && mouseInRect(2, 2, 2, 2) && UpgradeSuperClass.foodFactoryUpgradable()){
-            upgradesScreenOpen = false;
-        //grooming machine
-        } else if(upgradesScreenOpen && mouseInRect(3, 3, 3, 3) && UpgradeSuperClass.groomingMachineUpgradable()){
-            upgradesScreenOpen = false;
-        }
+    public void keyTyped() {
+        // Handle key typing logic if needed
+    }
+
+    @Override
+    protected void setup(GraphicsContext pen) {
+        // Add any setup logic if needed
+    }
+
+    @Override
+    protected void draw(GraphicsContext pen) {
+        double canvasWidth = pen.getCanvas().getWidth();
+        double canvasHeight = pen.getCanvas().getHeight();
+
+        // Clear the canvas
+        pen.clearRect(0, 0, canvasWidth, canvasHeight);
+
+        // Calculate the position to center the image
+        double imageX = (canvasWidth - 600) / 2;  // Adjust 600 to the actual width of your image
+        double imageY = (canvasHeight - 600) / 2;  // Adjust 600 to the actual height of your image
+
+        // Draw the background image
+        pen.drawImage(background, imageX, imageY, 600,600);
     }
 }
+
+
