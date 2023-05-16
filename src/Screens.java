@@ -7,6 +7,9 @@ import java.util.Optional;
 public class Screens extends ProcessingFX {
     protected String name = "";
     Image background = new Image("DogAssets/DogTycoonBackground.png");
+    Image player = new Image("DogAssets/playerHalfBody.png");
+
+    Image upgradeButton = new Image("DogAssets/upgradeButton.png");
 
     public Screens() {
 
@@ -45,8 +48,35 @@ public class Screens extends ProcessingFX {
                 Money.playerMoney += 150.0;
                 System.out.println("One grooming service sold. Earned $150.");
                 System.out.println("Current income: $" + Money.playerMoney);
-            }
+
         }
+    }
+
+        if (mouseInRect(400, 300, 550, 375)) {
+            TextInputDialog breedDialog = new TextInputDialog();
+            breedDialog.setHeaderText("Do you want to breed new dogs? (yes/no)");
+            Optional<String> breedResult = breedDialog.showAndWait();
+            if (breedResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
+                Money.playerMoney += 300.0;
+                System.out.println("One new dog bred. Earned $300.");
+                //pen.drawImage(dog,imageX,imageY,100,100);
+                System.out.println("Current income: $" + Money.playerMoney);
+
+            }
+
+            if (mouseInRect(60, 185, 160, 250)) {
+                TextInputDialog upgradeDialog = new TextInputDialog();
+                upgradeDialog.setHeaderText("Do you want to breed new dogs? (yes/no)");
+                Optional<String> upgradeResult = breedDialog.showAndWait();
+                if (upgradeResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
+                    Money.playerMoney += 300.0;
+                    System.out.println("One new dog bred. Earned $300.");
+                    //pen.drawImage(dog,imageX,imageY,100,100);
+                    System.out.println("Current income: $" + Money.playerMoney);
+
+                }
+            }
+
     }
 
     public void keyTyped() {
@@ -67,11 +97,15 @@ public class Screens extends ProcessingFX {
         pen.clearRect(0, 0, canvasWidth, canvasHeight);
 
         // Calculate the position to center the image
-        double imageX = (canvasWidth - 600) / 2;  // Adjust 600 to the actual width of your image
-        double imageY = (canvasHeight - 600) / 2;  // Adjust 600 to the actual height of your image
+        double imageX = (canvasWidth - 600) / 2;
+        double imageY = (canvasHeight - 600) / 2;
 
         // Draw the background image
         pen.drawImage(background, imageX, imageY, 600,600);
+
+        pen.drawImage(player,imageX,imageY,600,600);
+
+        pen.drawImage(upgradeButton,imageX,imageY,600,600);
     }
 }
 
