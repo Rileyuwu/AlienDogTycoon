@@ -76,11 +76,29 @@ public class Screens extends ProcessingFX {
     } //button for upgrade system
         if (mouseInRect(60, 185, 160, 250)) {
             TextInputDialog upgradeDialog = new TextInputDialog();
-            upgradeDialog.setHeaderText("Do you want to upgrade your store? (yes/no)");
+            upgradeDialog.setHeaderText("Which machine do you want to upgrade? \n (1) Food Factory \n (2) Grooming Machine \n (3) Growth Chamber");
             Optional<String> upgradeResult = upgradeDialog.showAndWait();
-            if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("yes")) {
-                System.out.println("Opening upgrade menu.");
-                System.out.println("Current income: $" + Money.playerMoney);
+            if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("1")) {
+                if(UpgradeSuperClass.foodFactoryUpgradable()){
+                    UpgradeSuperClass.upgradeMachine(UpgradeSuperClass.Machine.FOOD_FACTORY);
+                }else{
+                    System.out.println("Not enough money!");
+                }
+                System.out.println("Current balance: $" + Money.playerMoney);
+            }else if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("2")) {
+                if(UpgradeSuperClass.groomingMachineUpgradable()){
+                    UpgradeSuperClass.upgradeMachine(UpgradeSuperClass.Machine.GROOMING_MACHINE);
+                }else{
+                    System.out.println("Not enough money!");
+                }
+                System.out.println("Current balance: $" + Money.playerMoney);
+            }else if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("3")) {
+                if(UpgradeSuperClass.growthChamberUpgradable()){
+                    UpgradeSuperClass.upgradeMachine(UpgradeSuperClass.Machine.GROWTH_CHAMBER);
+                }else{
+                    System.out.println("Not enough money!");
+                }
+                System.out.println("Current balance: $" + Money.playerMoney);
             }else{
                 System.out.println("Nothing upgraded.");
             }

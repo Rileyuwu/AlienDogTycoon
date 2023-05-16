@@ -143,7 +143,7 @@ public class UpgradeSuperClass {
     }
 
 
-    public void upgradeMachine(Machine machine){
+    public static void upgradeMachine(Machine machine){
         if (getMachineTier(machine)<MAX_GROWTH_CHAMBER_TIER){
             if (playerMoney >= getUpgradeCost(machine)){
                 playerMoney -= getUpgradeCost(machine);
