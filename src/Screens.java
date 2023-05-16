@@ -66,18 +66,16 @@ public class Screens extends ProcessingFX {
 
             if (mouseInRect(60, 185, 160, 250)) {
                 TextInputDialog upgradeDialog = new TextInputDialog();
-                upgradeDialog.setHeaderText("Do you want to breed new dogs? (yes/no)");
+                upgradeDialog.setHeaderText("Do you want to upgrade your store? (yes/no)");
                 Optional<String> upgradeResult = breedDialog.showAndWait();
                 if (upgradeResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
-                    Money.playerMoney += 300.0;
-                    System.out.println("One new dog bred. Earned $300.");
-                    //pen.drawImage(dog,imageX,imageY,100,100);
+                    System.out.println("Opening upgrade menu.");
                     System.out.println("Current income: $" + Money.playerMoney);
 
                 }
             }
 
-    }
+    }}
 
     public void keyTyped() {
         // Handle key typing logic if needed
