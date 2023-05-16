@@ -30,6 +30,7 @@ public class Screens extends ProcessingFX {
         }
     }
 
+  //buttons for food factory and grooming machine
     public void mouseClicked() {
         if (mouseInRect(400, 50, 590, 165)) {
             TextInputDialog dialog = new TextInputDialog();
@@ -39,6 +40,8 @@ public class Screens extends ProcessingFX {
                 Money.playerMoney += 100.0;
                 System.out.println("One bag of pet food sold. Earned $100.");
                 System.out.println("Current income: $" + Money.playerMoney);
+            }else{
+                System.out.println("No food sold.");
             }
         } else if (mouseInRect(400, 200, 590, 250)) {
             TextInputDialog dialog = new TextInputDialog();
@@ -50,8 +53,11 @@ public class Screens extends ProcessingFX {
                 System.out.println("Current income: $" + Money.playerMoney);
 
         }
+            else{
+                System.out.println("No grooming service sold.");
+            }
     }
-
+        //button for growth chamber
         if (mouseInRect(400, 300, 550, 375)) {
             TextInputDialog breedDialog = new TextInputDialog();
             breedDialog.setHeaderText("Do you want to breed new dogs? (yes/no)");
@@ -62,20 +68,24 @@ public class Screens extends ProcessingFX {
                 //pen.drawImage(dog,imageX,imageY,100,100);
                 System.out.println("Current income: $" + Money.playerMoney);
 
+            }else{
+                System.out.println("No dog grown.");
             }
 
-            if (mouseInRect(60, 185, 160, 250)) {
-                TextInputDialog upgradeDialog = new TextInputDialog();
-                upgradeDialog.setHeaderText("Do you want to upgrade your store? (yes/no)");
-                Optional<String> upgradeResult = breedDialog.showAndWait();
-                if (upgradeResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
-                    System.out.println("Opening upgrade menu.");
-                    System.out.println("Current income: $" + Money.playerMoney);
 
-                }
+    } //button for upgrade system
+        if (mouseInRect(60, 185, 160, 250)) {
+            TextInputDialog upgradeDialog = new TextInputDialog();
+            upgradeDialog.setHeaderText("Do you want to upgrade your store? (yes/no)");
+            Optional<String> upgradeResult = upgradeDialog.showAndWait();
+            if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("yes")) {
+                System.out.println("Opening upgrade menu.");
+                System.out.println("Current income: $" + Money.playerMoney);
+            }else{
+                System.out.println("Nothing upgraded.");
             }
-
-    }}
+        }
+    }
 
     public void keyTyped() {
         // Handle key typing logic if needed
