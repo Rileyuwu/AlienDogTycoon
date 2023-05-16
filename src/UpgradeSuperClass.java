@@ -126,6 +126,19 @@ public class UpgradeSuperClass {
         }
         return 0;
     }
+    private static void increaseMachineTier(Machine machine){
+        switch (machine){
+            case FOOD_FACTORY:
+                foodFactoryTier++;
+                break;
+            case GROOMING_MACHINE:
+                groomingMachineTier++;
+                break;
+            case GROWTH_CHAMBER:
+                growthChamberTier++;
+                break;
+        }
+    }
 
     private static int getUpgradeCost(Machine machine){
         switch (machine){
@@ -147,6 +160,7 @@ public class UpgradeSuperClass {
         if (getMachineTier(machine)<MAX_GROWTH_CHAMBER_TIER){
             if (playerMoney >= getUpgradeCost(machine)){
                 playerMoney -= getUpgradeCost(machine);
+                increaseMachineTier(machine);
             }
         }else{
             System.out.println("Uh... this shouldn't have happened. (Error with upgrading)");
