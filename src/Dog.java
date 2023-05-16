@@ -11,12 +11,13 @@ public class Dog {
     public Dog() {
         commonImages = new String[] {
                 "dogCommon.png",
-                "path_to_common_image_2"
+                "chubbyDogCommon.png"
+
                 // Add more common image or rearrange later
         };
 
         uncommonImages = new String[] {
-                "ChubbyDogUncommon.png",
+
                 "dogUncommon.png"
         };
 

@@ -6,10 +6,20 @@ import java.util.Optional;
 
 public class Screens extends ProcessingFX {
     protected String name = "";
-    Image background = new Image("DogAssets/DogTycoonBackground.png");
-    Image player = new Image("DogAssets/playerHalfBody.png");
+    //import background image
 
+    //private Optional<String> breedResult;
+
+    Image background = new Image("DogAssets/DogTycoonBackground.png");
+    //import the player image
+    Image player = new Image("DogAssets/playerHalfBody.png");
+    //import upgrade button image
     Image upgradeButton = new Image("DogAssets/upgradeButton.png");
+
+    Image commonDogImage = new Image("DogAssets/dogCommon.png");
+
+    //Image randomCommonImage; // Variable to hold the random common image
+
 
     public Screens() {
 
@@ -30,17 +40,18 @@ public class Screens extends ProcessingFX {
         }
     }
 
-  //buttons for food factory and grooming machine
+    //buttons for food factory and grooming machine, if clicked dialogs pop up asking whether selling food/grooming service
     public void mouseClicked() {
         if (mouseInRect(400, 50, 590, 165)) {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setHeaderText("Do you want to sell food? (yes/no)");
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent() && result.get().equalsIgnoreCase("yes")) {
+
                 Money.playerMoney += 100.0;
                 System.out.println("One bag of pet food sold. Earned $100.");
                 System.out.println("Current income: $" + Money.playerMoney);
-            }else{
+            } else {
                 System.out.println("No food sold.");
             }
         } else if (mouseInRect(400, 200, 590, 250)) {
@@ -52,54 +63,56 @@ public class Screens extends ProcessingFX {
                 System.out.println("One grooming service sold. Earned $150.");
                 System.out.println("Current income: $" + Money.playerMoney);
 
-        }
-            else{
+            } else {
                 System.out.println("No grooming service sold.");
             }
-    }
-        //button for growth chamber
+        }
+        //button for growth chamber. If clicked dialogs pop up asking whether grow a new dog
         if (mouseInRect(400, 300, 550, 375)) {
             TextInputDialog breedDialog = new TextInputDialog();
             breedDialog.setHeaderText("Do you want to breed new dogs? (yes/no)");
+            //breedResult = breedDialog.showAndWait();
             Optional<String> breedResult = breedDialog.showAndWait();
             if (breedResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
                 Money.playerMoney += 300.0;
                 System.out.println("One new dog bred. Earned $300.");
-                //pen.drawImage(dog,imageX,imageY,100,100);
+                //Display commonDogImage
+
+
                 System.out.println("Current income: $" + Money.playerMoney);
 
-            }else{
+            } else {
                 System.out.println("No dog grown.");
             }
 
 
-    } //button for upgrade system
+        } //button for upgrade system. if clicked dialogs pop up asking whether upgrade the system.
         if (mouseInRect(60, 185, 160, 250)) {
             TextInputDialog upgradeDialog = new TextInputDialog();
             upgradeDialog.setHeaderText("Which machine do you want to upgrade? \n (1) Food Factory \n (2) Grooming Machine \n (3) Growth Chamber");
             Optional<String> upgradeResult = upgradeDialog.showAndWait();
             if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("1")) {
-                if(UpgradeSuperClass.foodFactoryUpgradable()){
+                if (UpgradeSuperClass.foodFactoryUpgradable()) {
                     UpgradeSuperClass.upgradeMachine(UpgradeSuperClass.Machine.FOOD_FACTORY);
-                }else{
+                } else {
                     System.out.println("Not enough money!");
                 }
                 System.out.println("Current balance: $" + Money.playerMoney);
-            }else if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("2")) {
-                if(UpgradeSuperClass.groomingMachineUpgradable()){
+            } else if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("2")) {
+                if (UpgradeSuperClass.groomingMachineUpgradable()) {
                     UpgradeSuperClass.upgradeMachine(UpgradeSuperClass.Machine.GROOMING_MACHINE);
-                }else{
+                } else {
                     System.out.println("Not enough money!");
                 }
                 System.out.println("Current balance: $" + Money.playerMoney);
-            }else if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("3")) {
-                if(UpgradeSuperClass.growthChamberUpgradable()){
+            } else if (upgradeResult.isPresent() && upgradeResult.get().equalsIgnoreCase("3")) {
+                if (UpgradeSuperClass.growthChamberUpgradable()) {
                     UpgradeSuperClass.upgradeMachine(UpgradeSuperClass.Machine.GROWTH_CHAMBER);
-                }else{
+                } else {
                     System.out.println("Not enough money!");
                 }
                 System.out.println("Current balance: $" + Money.playerMoney);
-            }else{
+            } else {
                 System.out.println("Nothing upgraded.");
             }
         }
@@ -127,12 +140,15 @@ public class Screens extends ProcessingFX {
         double imageY = (canvasHeight - 600) / 2;
 
         // Draw the background image
-        pen.drawImage(background, imageX, imageY, 600,600);
+        pen.drawImage(background, imageX, imageY, 600, 600);
 
-        pen.drawImage(player,imageX,imageY,600,600);
+        pen.drawImage(player, imageX, imageY, 600, 600);
 
-        pen.drawImage(upgradeButton,imageX,imageY,600,600);
+        pen.drawImage(upgradeButton, imageX, imageY, 600, 600);
+
+        //if (breedResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
+            //pen.drawImage(commonDogImage, imageX, imageY, 600, 600);
+        }
     }
-}
 
 
