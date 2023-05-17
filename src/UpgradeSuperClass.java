@@ -5,8 +5,6 @@ public class UpgradeSuperClass {
 
     //Constants for upgrade costs
     //TODO change pricing
-    //Set upgrade cost
-
 
     static final int MAX_GROOMING_MACHINE_TIER = 4;
     static final int MAX_FOOD_FACTORY_TIER = 4;
@@ -20,7 +18,7 @@ public class UpgradeSuperClass {
 
     public UpgradeSuperClass() {
 
-        //playerMoney = 1000;
+        playerMoney = 1000;
         groomingMachineTier = 1;
         foodFactoryTier = 1;
         growthChamberTier = 1;
@@ -163,7 +161,6 @@ public class UpgradeSuperClass {
             if (playerMoney >= getUpgradeCost(machine)){
                 playerMoney -= getUpgradeCost(machine);
                 increaseMachineTier(machine);
-                System.out.println("Machine upgraded");
             }
         }else{
             System.out.println("Uh... this shouldn't have happened. (Error with upgrading)");

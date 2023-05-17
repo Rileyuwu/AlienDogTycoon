@@ -3,8 +3,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.control.TextInputDialog;
 import java.util.Optional;
+import java.util.Random;
 
 public class Screens extends ProcessingFX {
+    private Random random;
+
     protected String name = "";
     //import background image
 
@@ -18,11 +21,14 @@ public class Screens extends ProcessingFX {
 
     Image commonDogImage = new Image("DogAssets/dogCommon.png");
 
+    Image orderButton = new Image ("DogAssets/orderButton.png");
+
     //Image randomCommonImage; // Variable to hold the random common image
 
 
     public Screens() {
 
+        random = new Random();
     }
 
     /**
@@ -40,13 +46,41 @@ public class Screens extends ProcessingFX {
         }
     }
 
-    //buttons for food factory and grooming machine, if clicked dialogs pop up asking whether selling food/grooming service
+
     public void mouseClicked() {
-        if (mouseInRect(400, 50, 590, 165)) {
+
+        if(mouseInRect(50,50,330,160)){
+            Customer customer = new Customer();
+            String name = customer.getName();
+            String dialogue= "";
+
+            if (customer.wantsGrooming()) {
+                dialogue = "I want to buy dog food.(yes/no)";
+            } else if (customer.wantsDogFood()) {
+                dialogue = "I want to groom my dog.(yes/no)";
+            } else if (customer.wantsDogType()) {
+                dialogue = "I want to breed a new dog.(yes/no)";
+            }
+
+            System.out.println(name + ": " + dialogue);
             TextInputDialog dialog = new TextInputDialog();
-            dialog.setHeaderText("Do you want to sell food? (yes/no)");
+            dialog.setHeaderText(name + ": " + dialogue );
             Optional<String> result = dialog.showAndWait();
+
             if (result.isPresent() && result.get().equalsIgnoreCase("yes")) {
+                System.out.println("New Order received. Please complete the order.");
+
+        }else{
+                System.out.println("No order recieved");
+            }}
+
+
+        //buttons for food factory and grooming machine, if clicked dialogs pop up asking whether selling food/grooming service
+        if (mouseInRect(400, 50, 590, 165)) {
+            TextInputDialog foodDialog = new TextInputDialog();
+            foodDialog.setHeaderText("Do you want to sell food? (yes/no)");
+            Optional<String> foodResult = foodDialog.showAndWait();
+            if (foodResult.isPresent() && foodResult.get().equalsIgnoreCase("yes")) {
 
                 Money.playerMoney += 100.0;
                 System.out.println("One bag of pet food sold. Earned $100.");
@@ -55,10 +89,10 @@ public class Screens extends ProcessingFX {
                 System.out.println("No food sold.");
             }
         } else if (mouseInRect(400, 200, 590, 250)) {
-            TextInputDialog dialog = new TextInputDialog();
-            dialog.setHeaderText("Do you want to sell grooming service? (yes/no)");
-            Optional<String> result = dialog.showAndWait();
-            if (result.isPresent() && result.get().equalsIgnoreCase("yes")) {
+            TextInputDialog foodDialog = new TextInputDialog();
+            foodDialog.setHeaderText("Do you want to sell grooming service? (yes/no)");
+            Optional<String> foodResult = foodDialog.showAndWait();
+            if (foodResult.isPresent() && foodResult.get().equalsIgnoreCase("yes")) {
                 Money.playerMoney += 150.0;
                 System.out.println("One grooming service sold. Earned $150.");
                 System.out.println("Current income: $" + Money.playerMoney);
@@ -86,7 +120,8 @@ public class Screens extends ProcessingFX {
             }
 
 
-        } //button for upgrade system. if clicked dialogs pop up asking whether upgrade the system.
+        }
+        //button for upgrade system. if clicked dialogs pop up asking whether upgrade the system.
         if (mouseInRect(60, 185, 160, 250)) {
             TextInputDialog upgradeDialog = new TextInputDialog();
             upgradeDialog.setHeaderText("Which machine do you want to upgrade? \n (1) Food Factory \n (2) Grooming Machine \n (3) Growth Chamber");
@@ -145,6 +180,12 @@ public class Screens extends ProcessingFX {
         pen.drawImage(player, imageX, imageY, 600, 600);
 
         pen.drawImage(upgradeButton, imageX, imageY, 600, 600);
+
+        pen.drawImage(orderButton, imageX, imageY, 600, 600);
+
+
+
+
 
         //if (breedResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
             //pen.drawImage(commonDogImage, imageX, imageY, 600, 600);
