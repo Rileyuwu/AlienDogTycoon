@@ -21,20 +21,14 @@ public class Main extends ProcessingFX {
     @Override
     protected void draw(GraphicsContext pen) {
         // TODO save every x seconds
+        screens.draw(pen);
     }
 
     /**
      * PUT METHODS IN OTHER CLASSES IN THIS METHOD IF THEY REQUIRE MOUSE CLICK INPUT
      */
     public void mousePressed(){
-        //screens.foodFactory();
-        //screens.groomingMachine();
-        // Screens.checkForOpeningUpgradesScreen();
-        // Screens.checkForClosingUpgradesScreen();
-        // Screens.checkForUpgradeMachine();
+        screens.mouseClicked();
     }
 
-    void drawBackground(){
-
-    }
 }

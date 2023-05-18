@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.Scanner;
-import java.io.FileWriter;
 
 public class DataSuperClass {
 
@@ -49,13 +48,28 @@ public class DataSuperClass {
 
         public static void saveData(String playerName, Money money) {
             try {
-                FileWriter writer = new FileWriter("player_info.txt", true);
-                writer.write("Player Name: " + playerName + "\n");
-                writer.write("Player Money: " + Money.getPlayerBalance() + "\n");
+                // Read the contents of the file
+                File file = new File("player_info.txt");
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                String line;
+                StringBuilder content = new StringBuilder();
+                while ((line = reader.readLine()) != null) {
+                    if (line.startsWith("Player Name: ")) {
+                        line = "Player Name: " + playerName;
+                    } else if (line.startsWith("Player Money: ")) {
+                        line = "Player Money: " + Money.getPlayerBalance();
+                    }
+                    content.append(line).append("\n");
+                }
+                reader.close();
+
+                // Write the modified contents back to the file
+                FileWriter writer = new FileWriter(file);
+                writer.write(content.toString());
                 writer.close();
-                System.out.println("Data autosaved.");
+                System.out.println("Data saved.");
             } catch (IOException e) {
-                System.out.println("An error occurred while autosaving data.");
+                System.out.println("An error occurred while saving data.");
                 e.printStackTrace();
             }
         }
@@ -67,7 +81,7 @@ public class DataSuperClass {
             System.out.println("Enter player name:");
             String name = scanner.nextLine();
             scanner.close();
-            return name; //gotta visualize this.
+            return name;
         }
     }
 
@@ -98,7 +112,6 @@ public class DataSuperClass {
             return 0;
         }
     }
-
 
     public static void main(String[] args) {
         DataSaver.main(args); // Run the DataSaver class
