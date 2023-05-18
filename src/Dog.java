@@ -10,7 +10,10 @@ public class Dog {
         // Initialize common dog images
         commonImages = new String[] {
                 "dogCommon.png",
-                "chubbyDogCommon.png"
+                "chubbyDogCommon.png",
+                "catCommon.png",
+                "dogUncommon.png",
+                "dogRare.png"
 
                 // Add more common images or rearrange later
         };

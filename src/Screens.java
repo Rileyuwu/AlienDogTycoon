@@ -4,11 +4,21 @@ import javafx.scene.image.Image;
 import javafx.scene.control.TextInputDialog;
 import java.util.Optional;
 import java.util.Random;
+/**
+ * Screens Class
+ * This Class is for showing main graphics for players
+ * including customer request, food factory, grooming and breeding chamber
+ *
+ * @author Emily Wang,Edwin Fleming,Riley So
+ * @version 1.0
+ * @since 2023-04-17
+ */
 
 public class Screens extends ProcessingFX {
     private Random random;
-    Dog dog;
     protected String name = "";
+    private long startTime = 0;  // Track the start time of image display
+    private int displayDuration = 5000;  // Display duration in milliseconds
 
     Image background = new Image("DogAssets/DogTycoonBackground.png");
     Image player = new Image("DogAssets/playerHalfBody.png");
@@ -16,8 +26,10 @@ public class Screens extends ProcessingFX {
     Image orderButton = new Image("DogAssets/orderButton.png");
     Image dogImage;
 
+    private Dog dog;//Instance of Dog class
+
     public Screens() {
-        dog = new Dog();
+        dog = new Dog();// Instantiate the Dog class
         random = new Random();
     }
 
@@ -86,7 +98,7 @@ public class Screens extends ProcessingFX {
             if (breedResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
                 Money.playerMoney += 300.0;
                 System.out.println("One new dog bred. Earned $300.");
-                dogImage = new Image("DogAssets/" + dog.getRandomImage(UpgradeSuperClass.Rarity.COMMON));
+                //dogImage = new Image("DogAssets/" + dog.getRandomImage(UpgradeSuperClass.Rarity.COMMON));
                 System.out.println("Current income: $" + Money.playerMoney);
             } else {
                 System.out.println("No dog grown.");
@@ -160,19 +172,34 @@ public class Screens extends ProcessingFX {
 
         pen.drawImage(orderButton, imageX, imageY, 600, 600);
 
-        if (mouseInRect(400, 300, 550, 375)) {
-            TextInputDialog breedDialog = new TextInputDialog();
-            breedDialog.setHeaderText("Do you want to breed new dogs? (yes/no)");
-            Optional<String> breedResult = breedDialog.showAndWait();
-            if (breedResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
-                Money.playerMoney += 300.0;
-                System.out.println("One new dog bred. Earned $300.");
-                dogImage = new Image("DogAssets/" + dog.getRandomImage(UpgradeSuperClass.Rarity.COMMON));
-                pen.drawImage(dogImage, imageX, imageY, 600, 600);
-                System.out.println("Current income: $" + Money.playerMoney);
-            } else {
-                System.out.println("No dog grown.");
+        // Check if it's time to display a new image
+        if (System.currentTimeMillis() - startTime >= displayDuration) {
+            // Reset the start time for the next image
+            startTime = System.currentTimeMillis();
+
+            // Get a new random image from the Dog class
+            String randomImage = dog.getRandomImage(UpgradeSuperClass.Rarity.COMMON);
+            dogImage = new Image("DogAssets/" + randomImage);
+        }
+
+        // Draw the dog image
+        pen.drawImage(dogImage, imageX, imageY, 600, 600);
+
+
+        //if (mouseInRect(400, 300, 550, 375)) {
+            //TextInputDialog breedDialog = new TextInputDialog();
+            //breedDialog.setHeaderText("Do you want to breed new dogs? (yes/no)");
+           // Optional<String> breedResult = breedDialog.showAndWait();
+           // if (breedResult.isPresent() && breedResult.get().equalsIgnoreCase("yes")) {
+             //   Money.playerMoney += 300.0;
+               // System.out.println("One new dog bred. Earned $300.");
+                //dogImage = new Image("DogAssets/" + dog.getRandomImage(UpgradeSuperClass.Rarity.COMMON));
+                //pen.drawImage(dogImage, imageX, imageY, 600, 600);
+              //  System.out.println("Current income: $" + Money.playerMoney);
+
+          //  } else {
+          //      System.out.println("No dog grown.");
             }
         }
-    }
-}
+ //   }
+//}

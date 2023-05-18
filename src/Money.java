@@ -1,3 +1,12 @@
+/**
+ * Money Class
+ * This Class is storing and displaying player money
+ *
+ * @author Emily Wang
+ * @version 1.0
+ * @since 2023-04-17
+ */
+
 public class Money {
     // Retrieve the player's current balance
     static int playerMoney = 0;

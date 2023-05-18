@@ -1,4 +1,12 @@
 import java.util.Random;
+/**
+ * Customer Class
+ * This class sets random Customer names and designs random orders
+ *
+ * @author Riley So
+ * @version 1.0
+ * @since 2023-04-17
+ */
 
 public class Customer {
     private final String name;
