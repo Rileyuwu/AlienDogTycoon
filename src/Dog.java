@@ -1,5 +1,3 @@
-import javafx.scene.paint.Color;
-
 public class Dog {
 
     private final String[] commonImages;
@@ -9,23 +7,26 @@ public class Dog {
     private final String[] legendaryImages;
 
     public Dog() {
+        // Initialize common dog images
         commonImages = new String[] {
                 "dogCommon.png",
                 "chubbyDogCommon.png"
 
-                // Add more common image or rearrange later
+                // Add more common images or rearrange later
         };
 
+        // Initialize uncommon dog images
         uncommonImages = new String[] {
-
                 "dogUncommon.png"
         };
 
+        // Initialize rare dog images
         rareImages = new String[] {
                 "dogRare.png",
                 "path_to_rare_image_2"
         };
 
+        // Initialize epic dog images
         epicImages = new String[] {
                 "dogEpic.png",
                 "dogEpic1.png",
@@ -33,6 +34,7 @@ public class Dog {
                 "SkullDogEpic.png"
         };
 
+        // Initialize legendary dog images
         legendaryImages = new String[] {
                 "dogLegend.png",
                 "DragonDogLegendary.png",
@@ -43,6 +45,7 @@ public class Dog {
     public String getRandomImage(UpgradeSuperClass.Rarity rarity) {
         String[] imageArray;
 
+        // Determine the image array based on the rarity
         switch (rarity) {
             case COMMON:
                 imageArray = commonImages;
@@ -63,9 +66,8 @@ public class Dog {
                 return null; // Return null if rarity is not recognized
         }
 
+        // Generate a random index to get a random image
         int randomIndex = (int) (Math.random() * imageArray.length);
         return imageArray[randomIndex];
     }
-
-
 }

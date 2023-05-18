@@ -6,24 +6,29 @@ public class DataSuperClass {
     public static class DataSaver {
         public static void main(String[] args) {
             try {
+                // Get player name from user
                 PlayerInfoGetter playerInfoGetter = new PlayerInfoGetter();
                 String playerName = playerInfoGetter.getName();
 
+                // Get player money
                 Money money = new Money();
                 int playerMoney = Money.getPlayerBalance();
 
+                // Player info to file
                 FileWriter writer = new FileWriter("player_info.txt", true);
                 writer.write("Player Name: " + playerName + "\n");
                 writer.write("Player Money: " + playerMoney + "\n");
                 writer.close();
                 System.out.println("Data added.");
 
+                // Retrieve player info from file
                 PlayerInfoSaver playerInfoSaver = new PlayerInfoSaver();
                 String savedPlayerName = playerInfoSaver.getPlayerName();
                 int savedPlayerMoney = playerInfoSaver.getPlayerMoney();
                 System.out.println("Player name retrieved from player info file: " + savedPlayerName);
                 System.out.println("Player money retrieved from player info file: " + savedPlayerMoney);
 
+                // Start auto-save thread
                 startAutoSave(playerName, money);
             } catch (IOException e) {
                 System.out.println("An error occurred.");
@@ -77,6 +82,7 @@ public class DataSuperClass {
 
     public static class PlayerInfoGetter {
         public String getName() {
+            // Get player name from user input
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter player name:");
             String name = scanner.nextLine();
@@ -87,6 +93,7 @@ public class DataSuperClass {
 
     public static class PlayerInfoSaver {
         public String getPlayerName() throws IOException {
+            // Retrieve player name from file
             File file = new File("player_info.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
@@ -100,6 +107,7 @@ public class DataSuperClass {
         }
 
         public int getPlayerMoney() throws IOException {
+            // Retrieve player money from file
             File file = new File("player_info.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;

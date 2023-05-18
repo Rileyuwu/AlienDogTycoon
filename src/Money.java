@@ -1,8 +1,9 @@
 public class Money {
+    // Retrieve the player's current balance
     static int playerMoney = 0;
 
     public static int getPlayerBalance(){
-
+    // Add the specified amount to the player's balance
         return playerMoney;
     }
 
@@ -13,11 +14,11 @@ public class Money {
 
     public boolean removeMoney(int amount){
         if (amount>playerMoney){
-            return false;
+            return false; // Ensures player has enough money
         }
         else{
             playerMoney -=amount;
-            return true;
+            return true; // Subtracts money from players account
         }
     }
 

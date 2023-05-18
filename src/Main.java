@@ -15,13 +15,13 @@ public class Main extends ProcessingFX {
         // TODO load data
         // TODO output data
         // TODO load background
-        DataSuperClass.DataSaver.main(null);
+        DataSuperClass.DataSaver.main(null); // Run data saving class
     }
 
     @Override
     protected void draw(GraphicsContext pen) {
         // TODO save every x seconds
-        screens.draw(pen);
+        screens.draw(pen); // Draws screen class
     }
 
     /**
@@ -30,5 +30,5 @@ public class Main extends ProcessingFX {
     public void mousePressed(){
         screens.mouseClicked();
     }
-
+    // Handle mouse click events for specific functionalities
 }
