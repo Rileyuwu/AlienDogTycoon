@@ -4,7 +4,7 @@ A tycoon game designed around breeding dogs.
 
 ## Installation
 
-Use JProcessingFX
+Unzip File, and drag into IDE
 
 
 ## Usage
