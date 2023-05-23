@@ -21,14 +21,14 @@ public class Screens extends ProcessingFX {
     private int displayDuration = 5000;  // Display duration in milliseconds
 
     //import background image
-    Image background = new Image("DogAssets/DogTycoonBackground.png");
+    private Image background = new Image("DogAssets/DogTycoonBackground.png");
     //import player image
-    Image player = new Image("DogAssets/playerHalfBody.png");
+    private Image player = new Image("DogAssets/playerHalfBody.png");
     //import button images
-    Image upgradeButton = new Image("DogAssets/upgradeButton.png");
-    Image orderButton = new Image("DogAssets/orderButton.png");
+    private Image upgradeButton = new Image("DogAssets/upgradeButton.png");
+    private Image orderButton = new Image("DogAssets/orderButton.png");
     //import random dog images
-    Image dogImage;
+    private Image dogImage;
 
     private Dog dog;//Instance of Dog class
 
@@ -49,7 +49,7 @@ public class Screens extends ProcessingFX {
      * @since 2023-05-5
      */
 
-    public boolean mouseInRect(double x1, double y1, double x2, double y2) {
+    private boolean mouseInRect(double x1, double y1, double x2, double y2) {
         if (x1 <= mouse.x && mouse.x <= x2 && y1 <= mouse.y && mouse.y <= y2) {
             return true;
         } else {
@@ -217,6 +217,9 @@ public class Screens extends ProcessingFX {
         // Draw the dog image
         pen.drawImage(dogImage, imageX, imageY, 600, 600);
 
+
+        //These codes cause error with Breeding button as graphics don't work with showAndWait()
+        //It is kept to be a reference for further solutions
 
         //if (mouseInRect(400, 300, 550, 375)) {
             //TextInputDialog breedDialog = new TextInputDialog();
