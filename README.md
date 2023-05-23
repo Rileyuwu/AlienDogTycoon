@@ -1,10 +1,10 @@
 # Alien Dog Tycoon
 
-A tycoon game designed around breeding dogs.
+A tycoon game designed around a friendly pet store!
 
 ## Installation
 
-Use JProcessingFX
+Unzip File, and drag into IDE
 
 
 ## Usage
@@ -18,6 +18,14 @@ Use JProcessingFX
 java AlienDogTycoon
 ```
 
+Or Run Main.java
+
+## Requirements
+
+**Required SDK:** Amazon Correto versio 1.8.0_352
+
+
+**No OS requirement** 
 
 ## License
 
