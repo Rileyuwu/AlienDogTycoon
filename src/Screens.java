@@ -20,10 +20,14 @@ public class Screens extends ProcessingFX {
     private long startTime = 0;  // Track the start time of image display
     private int displayDuration = 5000;  // Display duration in milliseconds
 
+    //import background image
     Image background = new Image("DogAssets/DogTycoonBackground.png");
+    //import player image
     Image player = new Image("DogAssets/playerHalfBody.png");
+    //import button images
     Image upgradeButton = new Image("DogAssets/upgradeButton.png");
     Image orderButton = new Image("DogAssets/orderButton.png");
+    //import random dog images
     Image dogImage;
 
     private Dog dog;//Instance of Dog class
@@ -33,6 +37,18 @@ public class Screens extends ProcessingFX {
         random = new Random();
     }
 
+    /**
+     * mouseInRect method checks whether mouse is clicked inside a certain area
+     *
+     * x1 represents upper left corner x coordinates
+     * y1 represents upper left corner y coordinates
+     * x2 represents lower right corner x coordinates
+     * y2 represents lower right corner  coordinates
+     * @author Edwin Fleming
+     * @version 1.0
+     * @since 2023-05-5
+     */
+
     public boolean mouseInRect(double x1, double y1, double x2, double y2) {
         if (x1 <= mouse.x && mouse.x <= x2 && y1 <= mouse.y && mouse.y <= y2) {
             return true;
@@ -41,6 +57,17 @@ public class Screens extends ProcessingFX {
         }
     }
 
+    /**
+     * mouseClicked method Check whether clicked inside the area
+     * and displays random customer name+request/task completion request/upgrade request
+     *
+     *
+     * @author Emily Wang, Edwin Fleming
+     * @version 1.0
+     * @since 2023-05-7
+     */
+    //
+    //if answered yes, customer request recived
     public void mouseClicked() {
         if (mouseInRect(50, 50, 330, 160)) {
             Customer customer = new Customer();
@@ -66,6 +93,8 @@ public class Screens extends ProcessingFX {
                 System.out.println("No order received");
             }
         }
+        //Check whether clicked inside the area, and activate the text box to get answer from user
+        //if answer yes, task completed and playerMoney increases
 
         if (mouseInRect(400, 50, 590, 165)) {
             TextInputDialog foodDialog = new TextInputDialog();
@@ -104,6 +133,9 @@ public class Screens extends ProcessingFX {
                 System.out.println("No dog grown.");
             }
         }
+
+
+        //Check whether clicked inside the area, and displays upgrade menu
 
         if (mouseInRect(60, 185, 160, 250)) {
             TextInputDialog upgradeDialog = new TextInputDialog();
@@ -165,9 +197,9 @@ public class Screens extends ProcessingFX {
 
         // Draw the background image
         pen.drawImage(background, imageX, imageY, 600, 600);
-
+        // Draw the player image
         pen.drawImage(player, imageX, imageY, 600, 600);
-
+        // Draw the button images
         pen.drawImage(upgradeButton, imageX, imageY, 600, 600);
 
         pen.drawImage(orderButton, imageX, imageY, 600, 600);

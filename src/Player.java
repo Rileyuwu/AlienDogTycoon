@@ -1,5 +1,12 @@
 import java.io.IOException;
-
+/**
+ * Player class
+ *
+ *
+ * @author Riley So,Edwin Fleming
+ * @version 1.0
+ * @since 2023-05-3
+ */
 public class Player {
     public static boolean money;
     private String playerName;

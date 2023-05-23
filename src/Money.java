@@ -18,6 +18,7 @@ public class Money {
 
     public void addMoney(int amount){
 
+        //Methods to increase playerMoney
         playerMoney += amount;
     }
 

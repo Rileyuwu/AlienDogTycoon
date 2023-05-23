@@ -1,3 +1,11 @@
+/**
+ *Dog class
+ * This class sorts dog images in to various levels
+ *
+ * @author Riley so, Emily Wang
+ * @version 1.0
+ * @since 2023-05-7
+ */
 public class Dog {
 
     private final String[] commonImages;

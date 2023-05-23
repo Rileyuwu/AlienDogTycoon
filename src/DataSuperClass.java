@@ -1,6 +1,13 @@
 import java.io.*;
 import java.util.Scanner;
-
+/**
+ * DataSuper class
+ *
+ *
+ * @author Riley So
+ * @version 1.0
+ * @since 2023-05-15
+ */
 public class DataSuperClass {
 
     public static class DataSaver {

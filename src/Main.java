@@ -1,5 +1,14 @@
 import JProcessingFX.ProcessingFX;
 import javafx.scene.canvas.GraphicsContext;
+/**
+ * Main Class
+ * This class calls from Screen and other class to show graphics and display game mechanism
+ *data saved from this class constantly
+ *
+ * @author Riley So, Emily Wang,Edwin Fleming
+ * @version 1.0
+ * @since 2023-05-17
+ */
 
 public class Main extends ProcessingFX {
     private Screens screens;

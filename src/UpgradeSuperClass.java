@@ -1,6 +1,13 @@
 import java.util.Scanner;
 import java.lang.Math;
-
+/**
+ * Upgrade class
+ * This Class designs upgrade levels and incorporates them with different cost
+ *
+ * @author Riley So,Edwin Fleming, Emily Wang
+ * @version 1.0
+ * @since 2023-05-10
+ */
 public class UpgradeSuperClass {
 
     //Constants for upgrade costs
