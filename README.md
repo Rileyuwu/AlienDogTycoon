@@ -1,6 +1,6 @@
 # Alien Dog Tycoon
 
-A tycoon game designed around breeding dogs.
+A tycoon game designed around a friendly pet store!
 
 ## Installation
 
