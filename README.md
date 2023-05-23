@@ -12,6 +12,9 @@ Use JProcessingFX
 ```batch
 java AlienDogTycoon
 ```
+
+Or Run Main.java
+
 ## Requirements
 
 **Required SDK:** Amazon Correto versio 1.8.0_352
